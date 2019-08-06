@@ -16,9 +16,8 @@ int main ()
                         e -= 1;
                 else if (arr[i] == 1)
                         e -= 3;
-                if (i == n - k) {
-                        break;
-                }       
+                if (i == n - k)
+                        break;     
                 i = (i + k) % n;
         }       
         cout << e << endl;
