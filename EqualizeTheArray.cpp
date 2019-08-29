@@ -21,7 +21,7 @@ int main ()
 			temp = counter;
 	}
 	temp++;
-	int res = (n - temp);
+	int res = n - temp;
 	cout << res << endl;
 
 	return 0;
