@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int vector <int> v;
+vector <int> v;
 
 bool found (int n)
 {
@@ -38,7 +38,6 @@ int position (int n)
 int main ()
 {
     int n, in, m;
-    vector <int> v;
 
     scanf("%d", &n);
     for (int i = 0; i < n; i++) {
