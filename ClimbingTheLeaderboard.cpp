@@ -1,49 +1,54 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-int main()
+bool found (int n, vector <int> &v)
 {
-    int m, n;
-    cin >> m;
-    unsigned arr[m];
-    for (int i = 0; i < m; i++) {
-        cin >> arr[i];
+    int left = 0, right = v.size() - 1;
+
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (v[mid] == n) return true;
+
+        if (v[mid] > n) left = mid + 1;
+
+        else right = mid - 1;
     }
-    int a[m];
-    int j = 1;
-    a[0] = j;
-    for (int i = 1; i < m; i++) {
-        if (arr[i] == arr[i - 1]) {
-            a[i] = j;
-        }
-        else {
-            a[i] = ++j;
-        }
+    return false;
+}
+
+int position (int n, vector <int> &v)
+{
+    int left = 0, right = v.size() - 1, mid = 0;
+    while (left <= right) {
+        mid = (left + right) / 2;
+        if (v[mid] == n) return (mid + 1);
+
+        if (v[mid] > n) left = mid + 1;
+
+        else right = mid - 1;
     }
-    cin >> n;
-    unsigned ara[n];
-    j = m - 1;
+    if (v[mid] > n) return (left + 1);
+
+    else return (right + 2);
+}
+
+int main ()
+{
+    int n, in, m;
+    vector <int> v;
+
+    scanf("%d", &n);
     for (int i = 0; i < n; i++) {
-        int counter = 0;
-        int ans = 0;
-        cin >> ara[i];
-        while (j >= 0) {
-            if (ara[i] >= arr[j]) {
-            }
-            else {
-                counter++;
-                break;
-            }
-            j--;
-        }
-        if (counter != 0) {
-            ans = a[j] + 1;
-        }
-        else {
-            ans = a[j + 1];
-        }
-        cout << ans << endl;
+        scanf("%d", &in);
+        if (!i) v.push_back(in);
+
+        else if (!found(in, v)) v.push_back(in);
+    }
+    scanf("%d", &m);
+    while (m--) {
+        scanf("%d", &in);
+        printf("%d\n", position(in, v));
     }
 
     return 0;
