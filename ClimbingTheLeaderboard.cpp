@@ -2,7 +2,9 @@
 
 using namespace std;
 
-bool found (int n, vector <int> &v)
+int vector <int> v;
+
+bool found (int n)
 {
     int left = 0, right = v.size() - 1;
 
@@ -17,7 +19,7 @@ bool found (int n, vector <int> &v)
     return false;
 }
 
-int position (int n, vector <int> &v)
+int position (int n)
 {
     int left = 0, right = v.size() - 1, mid = 0;
     while (left <= right) {
@@ -43,12 +45,12 @@ int main ()
         scanf("%d", &in);
         if (!i) v.push_back(in);
 
-        else if (!found(in, v)) v.push_back(in);
+        else if (!found(in)) v.push_back(in);
     }
     scanf("%d", &m);
     while (m--) {
         scanf("%d", &in);
-        printf("%d\n", position(in, v));
+        printf("%d\n", position(in));
     }
 
     return 0;
